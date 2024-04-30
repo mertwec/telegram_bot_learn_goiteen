@@ -7,11 +7,11 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 
-from settings import TOKEN
+from settings import TOKEN, PROXY
 from app.handlers import router
 from aiogram.client.session.aiohttp import AiohttpSession
 
-session = AiohttpSession(proxy="http://proxy.server:3128")
+session = AiohttpSession(proxy=PROXY)
 
 bot = Bot(TOKEN,
           default=DefaultBotProperties(parse_mode=ParseMode.HTML),
