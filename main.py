@@ -9,10 +9,16 @@ from aiogram.fsm.storage.memory import MemoryStorage
 
 from settings import TOKEN
 from app.handlers import router
+from aiogram.client.session.aiohttp import AiohttpSession
 
-bot = Bot(TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+session = AiohttpSession(proxy="http://proxy.server:3128")
+
+bot = Bot(TOKEN,
+          default=DefaultBotProperties(parse_mode=ParseMode.HTML),
+          session=session
+          )
+
 dp = Dispatcher(storage=MemoryStorage())
-
 dp.include_router(router)
 
 
